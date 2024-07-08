@@ -18,7 +18,7 @@ final class NantesLabelAccessibilityElement: UIAccessibilityElement {
                 assertionFailure("LabelAccessibilityElements need a superview to setup their bounding rect correctly")
                 return .zero
             }
-            return UIAccessibility.convertToScreenCoordinates(boundingRect, in: superview)
+            return UIAccessibility.convertToScreenCoordinates(superview.bounds, in: superview)
         } set {}
     }
 }
