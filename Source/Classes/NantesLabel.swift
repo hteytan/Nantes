@@ -315,4 +315,15 @@ import UIKit
 
         attributedText = mutableAttributedString
     }
+
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+
+        accessibilityElements?.forEach({ anyElement in
+            guard let uiAccessibilityElement = anyElement as? UIAccessibilityElement else {
+                return
+            }
+            uiAccessibilityElement.accessibilityFrameInContainerSpace = self.bounds
+        })
+    }
 }

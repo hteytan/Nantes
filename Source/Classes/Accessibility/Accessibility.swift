@@ -36,16 +36,17 @@ extension NantesLabel {
             return
         }
 
-        var elements: [NantesLabelAccessibilityElement] = []
+        var elements: [UIAccessibilityElement] = []
         var actions: [UIAccessibilityCustomAction] = []
 
-        let baseElement = NantesLabelAccessibilityElement(accessibilityContainer: self)
+        let baseElement = UIAccessibilityElement(accessibilityContainer: self)
         baseElement.accessibilityLabel = super.accessibilityLabel
         baseElement.accessibilityHint = super.accessibilityHint
         baseElement.accessibilityValue = super.accessibilityValue
         baseElement.accessibilityTraits = super.accessibilityTraits
-        baseElement.boundingRect = bounds
-        baseElement.superview = self
+        baseElement.accessibilityFrameInContainerSpace = self.bounds
+//        baseElement.boundingRect = bounds
+//        baseElement.superview = self
         elements.append(baseElement)
 
         for link in linkModels {
